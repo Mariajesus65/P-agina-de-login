@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Funcionários Itaú</title>
+    <link rel="stylesheet" href="css/style.css">
+</head >
+<body>
+    <div id="main-container"> 
+        <h1>Cadastrar Login</h1>
+        <br>
+     <form id="register-form">
+
+      <!--Email-->
+        <div class="full-box">
+            <label id="labelEmail" for="email">E-mail</label>
+            <input type="email" name="email" id="email"  placeholder="Digite o seu email">
+        </div>
+
+        <!--Nome--> 
+        <div class="half-box spacing">
+            <label id="labelNome" for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" onkeyup="maiuscula(this)" placeholder="Digite o seu nome" pattern="[]" > 
+        </div>
+        <!--Senha-->
+        <div class="half-box spacing">
+            <label id="labelPassword" for="password">Senha</label>
+            <input type="password" name="password" id="password" placeholder="Digite a sua senha">
+        </div>
+
+        <!--Confirmação-->
+        <div class="half-box">
+            <label id="labelPassconfirmation" for="passconfirmation">Confirme sua senha</label>
+            <input type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha">
+        </div>
+
+        <!--Termos-->
+        <div class="full-box">
+            <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso<label>
+            <input type="checkbox" name="agreement" id="agreement">
+        </div>
+
+        <!--Registrar-->
+        <div class="full-box">
+            <input type="button" value="Gravar" onclick="Gravar()">
+        </div>
+        </form>
+    </div> 
+        <p class="error-validation template"></p>
+
+    <script type="text/javascript">
+
+    var input = document.querySelector("#nome");
+    input.addEventListener("keypress", function(e) {
+    if(!checkChar(e)) {
+      e.preventDefault();
+  }
+});
+    function checkChar(e) {
+    var char = String.fromCharCode(e.keyCode);
+  
+    console.log(char);
+    var pattern = '[a-zA-Z]';
+    if (char.match(pattern)) {
+      return true;
+  }
+}
+
+    function maiuscula(string){
+    res = string.value.toUpperCase();
+
+    string.value =res;
+}
+  
+var vnome, vemail, vpassword;
+
+function Gravar() {
+        vnome=document.getElementById("nome").value;
+        vemail=document.getElementById("email").value;
+        vpassword=document.getElementById("password").value;
+        localStorage.Nome=vnome;
+        localStorage.email=vemail;
+        localStorage.Senha=vpassword;
+}
+
+    var strConcatenada = "STR_VARIAVEL.";
+    var element = document.getElementById("nome");
+    element.name = element.name.replace("strConcatenada", strConcatenada)
+    console.log(element.name);
+    
+    </script>
+</body>
+</html>  
